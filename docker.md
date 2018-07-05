@@ -4,6 +4,12 @@ Dieses Dokument soll einen kurzes Überblick über die Software Docker, Containe
 
 ## Was ist Docker?
 
+Docker ist eine Software zum Betrieb von [Containervirtualisierung]()
+
+Containervirtualisierung (auch: Betriebssystem- oder Applikationsvirtualisierung) ist eine Methode, um mehrere Instanzen eines Betriebssystems (als sog. „Gäste“) isoliert voneinander auf einem Hostsystem zu betreiben. Im Gegensatz zur Virtualisierung mittels eines Hypervisors hat Containervirtualisierung zwar einige Einschränkungen in der Art ihrer Gäste, gilt aber als besonders ressourcenschonend.
+
+
+
 ## Warum überhaupt Docker?
 
 ## docker-compose
