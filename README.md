@@ -33,6 +33,10 @@ Da es bis auf die in den Datenbanken abgelegten Daten quasi keine persistent zu 
 + **Erreichbarkeit:** Zum Testen und Entwickeln von Plugins für Moodle und für Tests der Prozesse für Activiti ist ein Zugriff auf die Webinterfaces dieser beiden Dienste nötig. Systeme innerhalb des DHBW-Systems sind lediglich über einen VPn erreichbar. Für diesen VPN sind Studenten jedoch standardmäßig nicht zugelassen. Eine Zulassung der Studenten eines Kurses kann unter Umständen länger dauern. Zugriff auf Seiten durch diesen VPN ist dazu umständlicher und kann bei weniger technischen Projektmitgliedern zu Frustration führen.
 Der verwendete Server war bereits über einen Hostnamen mit gültigem TLS-Zertifikat aus dem Internet erreichbar. Für dieses Projekt wurden lediglich zwei Subdomaisn hinzugefügt und die Dienste intern weitergeleitet. Für weitere Informationen zu diesem Setup, siehe [Kapitel 5](nginx-als-reverse-proxy.md).
 
+## Start der Infrastrukur
+
+Für eine kompakte Anleitung zum Start der Infrastruktur, siehe [Kapitel 1.6]()
+
 *****************
 
 [Next - Chapter 1.2: Docker](docker.md)
