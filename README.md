@@ -1,6 +1,7 @@
 # Infrastruktur
 
-Dieser Text soll einen Überblick über die Infrastruktur für das Moodle-Projekt des Jahrganges WWI-15-SCB. Alle verwendeten Dienste, Software oder anderweitige Angebote werden in diesem Rahmen entweder in einer Ausführlichkeit, die für den Betrieb und die Wartung der Infrastrukur nötig ist, erläutert und erklärt, oder eine Referenz auf die exakte Quelle wird angegeben.
+Dieser Text soll einen Überblick über die Infrastruktur für das sWIm-Projekt des Jahrganges WWI-15-SCB geben. Ziel des Projektes war es, die Lern-Plattform Moodle an der DHBW um Funktionen zu erweitern.  
+Alle verwendeten Dienste, Software oder anderweitige Angebote werden in diesem Rahmen entweder in einer Ausführlichkeit, die für den Betrieb und die Wartung der Infrastrukur nötig ist, erläutert und erklärt, oder eine Referenz auf die exakte Quelle wird angegeben.
 
 ## Übersicht
 
@@ -29,4 +30,9 @@ Während des Projektes wurde die gesamte Infrastruktur auf privater Hardware geh
 + **Einfachheit:** Im Umfeld des Kurses gab es bereits Server-Hardware, welche mit (für einen Heimserver überragender) Ausfallsicherheit durch RAID 5 und bereits installiertem, getestetem und produktiv genutztem Docker überzeugte. Das Starten erster Container für erste Test war auf diesem System deutlich schneller, als sich über die DHBW zunächst Zugriff auf Systeme zu besorgen und diese anschließend einzurichten.
 Da es bis auf die in den Datenbanken abgelegten Daten quasi keine persistent zu haltenen Daten gab, war die Sorge bezüglich der Übergabe an folgende Kurse gering.
 
-+ **Erreichbarkeit:** Zum Testen und Entwickeln von Plugins für Moodle und für Tests der Prozesse für Activiti ist ein Zugriff auf die Webinterfaces dieser beiden Dienste nötig. Systeme innerhalb des DHBW-Systems sind lediglich über einen VPn erreichbar. Für diesen VPN sind Studenten jedoch standardmäßig nicht zugelassen. Eine Zulassung der Studenten eines Kurses kann unter Umständen länger dauern. 
++ **Erreichbarkeit:** Zum Testen und Entwickeln von Plugins für Moodle und für Tests der Prozesse für Activiti ist ein Zugriff auf die Webinterfaces dieser beiden Dienste nötig. Systeme innerhalb des DHBW-Systems sind lediglich über einen VPn erreichbar. Für diesen VPN sind Studenten jedoch standardmäßig nicht zugelassen. Eine Zulassung der Studenten eines Kurses kann unter Umständen länger dauern. Zugriff auf Seiten durch diesen VPN ist dazu umständlicher und kann bei weniger technischen Projektmitgliedern zu Frustration führen.
+Der verwendete Server war bereits über einen Hostnamen mit gültigem TLS-Zertifikat aus dem Internet erreichbar. Für dieses Projekt wurden lediglich zwei Subdomaisn hinzugefügt und die Dienste intern weitergeleitet. Für weitere Informationen zu diesem Setup, siehe [Kapitel 5](nginx-als-reverse-proxy.md).
+
+*****************
+
+[Next - Chapter 1.2: Docker](docker.md)
