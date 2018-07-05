@@ -35,7 +35,7 @@ Der verwendete Server war bereits über einen Hostnamen mit gültigem TLS-Zertif
 
 ## Start der Infrastrukur
 
-Für eine kompakte Anleitung zum Start der Infrastruktur, siehe [Kapitel 1.6]()
+Für eine kompakte Anleitung zum Start der Infrastruktur, siehe [Kapitel 1.6](starten-der-infrastruktur.md)
 
 *****************
 
