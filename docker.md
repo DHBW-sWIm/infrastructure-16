@@ -13,4 +13,9 @@ S
 
 ## Warum überhaupt Docker?
 
+Docker erlaubt nicht nur das unkomplizierte Starten von Diensten und Programmen in immer der gleichen Umgebung, sondern auch die Verknüpfung dieser Dienste mittels virtueller Netze. Dies ermöglicht eine Abtrennung einzelner Container, die somit nur von ausgewählten anderen Containern erreichbar sind.  
+Eben
+
 ## docker-compose
+
+`docker-compose` ist ein Tool, welches das Starten, Verwalten und Verknüpfen von Docker-Containern erleichtert. Die Container samt ihrer anzuwendenen Parametern und Verknüpfungen zu anderen Containern werden in einer `.yml`-Datei festgehalten und sind so jederzeit reproduzierbar.
