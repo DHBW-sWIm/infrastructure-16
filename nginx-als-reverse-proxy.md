@@ -72,10 +72,34 @@ networks:
     external:
       name: moodle_moodle-net
 ```
+Um die Container in einem Netz zu verbinden, muss ein Netzwerk existieren. hier wird das Netzwerk `moodle-net` definiert, dass sich nach außen hin für Container, welche nicht über diese docker-compose Datei definiert wurden, als `moodle_moodle-net` zeigt.
 
 ### Nginx Konfiguration
 
+Die Konfiguration geht davon aus, dass Nginx auf einem System mit der Domain "myhost.de" läuft. Dies ist in allen der folgenden Konfigurationsdateien anzupassen.
+
 #### Activiti
+
+In der Datei [`activiti.conf`](docker-compose/Nginx/activiti.conf) ist der Transparent Proxy für Activiti definiert:
+
+```
+server {
+  listen 8000;
+  server_name activiti.myhost.de;
+
+  error_log /var/log/nginx/activiti-error.log info;
+
+  root /www;
+
+  location / {
+    return 301 https://$host$request_uri;
+  }
+
+  location /.well-known/ {}
+
+}
+```
+
 
 #### Moodle
 
