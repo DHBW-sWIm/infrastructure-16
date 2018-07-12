@@ -126,10 +126,30 @@ server {
     proxy_pass http://$upstream_activiti:8080;
   }
 }
-
 ```
+Die Zertfikate werden eingebunden, die vom Container selbst bereitgestellten Standard-Konfigurationen für TLS- und SSL-Verbindungen werden eingebunden, und die maximale Größe der hochladbaren Dateien wird erhöht (in diesem Fall 10GB, was zugegebenermaßen etwas übertrieben sein mag).
+
+Anschließend wird für die Lokation `/`, also für alle Anfragen, definiert, dass diese an den internen Host "swim-activiti" auf Port 8080 weitergegeben werden sollen. Damit ist die Konfiguration des Proxys für Activiti komplett.
 
 #### Moodle
+
+
+```
+server {
+  listen 8000;
+  server_name moodle.myhost.de;
+
+  root /www;
+
+  location / {
+    return 301 https://$host$request_uri;
+  }
+
+  location /.well-known/ {}
+
+}
+```
+
 
 ## Starten und Verwalten
 
