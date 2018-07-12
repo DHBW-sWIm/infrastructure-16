@@ -99,7 +99,11 @@ server {
 
 }
 ```
+Alle Anfragen auf Port 80 des Hosts (und damit auf Port 8000 des Containers) werden automatisch auf die TLS-verschlüsselte Verbindung auf Port 443 des Hosts (und damit auf Port 4430 des Containers) umgeleitet.  
+Die einzige Ausnahme bilden hier Anfragen auf den Order `.well-known`, da dieser für das Einrichten von Let's Encrypt Zertfikaten erreichbar sein muss.
 
+```
+```
 
 #### Moodle
 
