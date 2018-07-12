@@ -186,8 +186,6 @@ Die Zertfikate werden eingebunden, die vom Container selbst bereitgestellten Sta
 Anschließend wird für die Lokation `/`, also für alle Anfragen, definiert, dass diese an den internen Host "swim-moodle" auf Port 8080 weitergegeben werden sollen.  
 Hierfür werden zusätzliche bestimmte Header gesetzt, um Moodle mitzuteilen, dass es sich hinter einem Proxy befindet und seine Antworten entsprechend anpassen muss. Damit ist die Konfiguration des Proxys für Moodle komplett.
 
-
-
 ## Starten und Verwalten
 
 
