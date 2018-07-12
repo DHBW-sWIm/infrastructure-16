@@ -5,4 +5,6 @@
 ### Dockerfile
 
 
-## 
+## Konfiguration
+
+### docker-compose File
