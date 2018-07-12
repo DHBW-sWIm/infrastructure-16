@@ -34,17 +34,25 @@ Diese Zeile leitet die Konfiguration der zu startenden Container ein.
     image: "wonderfall/boring-nginx:latest"
     container_name: swim-nginx
 ```
+Der Container "nginx" wird definiert. Der Tag `image` definiert, welches Docker-Image verwendet werden soll. Sollte das gewählte Image lokal nicht gefunden werden, so lädt Docker es beim Start der Container herunter.  
+Der Tag `container_name` definiert, mit welchem Namen der Container gestartet wird. Dieser Name gilt in Docker-internen Netzen als Hostname, und wird auch in allen Management-Tools für Docker verwendet.
 
 ```
     ports:
       - "80:8000"
       - "443:4430"
 ```
+Das Portmapping wird definiert. Der Port 80 des Hostsystems wird auf den Port 8000 des Containers gemappt (da in einem Docker-Container kein Dienst auf einem Port unter 2000 laufen darf). Alle Anfragen, die nun auf Port 80 des Hostsystems gehen, werden an den Container durchgereicht, dieser beantwortet die Anfragen und sendet sie auf gleichem Wege zurück.  
+Das Gleiche passiert für den Port 443 (genutzt für HTTPS), welcher auf Port 4430 des Containers umgeleitet wird.
+
 ```
     volumes:
       - /docker/certs:/certs
       - /mnt/nginx/sites-enabled:/sites-enabled
 ```
+Die TLS-Zertfikate und die Konfigurationsdateien werden eingebunden.  
+Die Zertfikate wurden mittels [*Let's Encrypt*](https://letsencrypt.org/) erstellt und sind logischerweise dem eigenen System anzupassen. Zertifikate von *Let's Encrypt* sind kostenlos und leicht zu erzeugen.  
+
 
 ```
     networks:
