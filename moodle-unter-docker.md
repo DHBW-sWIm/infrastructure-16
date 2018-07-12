@@ -1,12 +1,27 @@
 # Moodle unter Docker
 
+Zur Entwicklung von Plugins für Moodle besteht offensichtlich der Bedarf, diese Plugins auch zu testen. Zu diesem Zweck ist eine Instanz von Moodle nötig.  
+Wie bereits erwähnt, wurde beschlossen, diese Instanz mittels Docker zu betreiben, um den "operational overhead" zu minimieren.
+
 ## Das Container-Image
+
+Die Entwickler scheinen dem Konzept von Docker gegenüber [nicht wirklich offen gegenüber zu stehen.](https://moodle.org/mod/forum/discuss.php?d=278759) Es gibt keine offiziellen Container-Images, welche verwendet werden könnten, und jene, welche durch Einzelpersonen gebaut wurden, sind meist entweder veraltet oder nicht stabil genug für einen produktiven Einsatz.
+
+Die Firma Bitnami, welche für viele Software-Lösungen aus dem Open-Source-Bereich fertig konfigurierte Anwendungspakete bereit stellt, betreibt ein Docker-Image von Moodle, welches regelmäßig Updates erhält. Auf der [Github-Seite des Images](https://github.com/bitnami/bitnami-docker-moodle) unterstützt Bitnami Benutzer bei Problemen über die Ticket-Funktion von Github.  
+Dieses Image ist leicht zu konfigurieren, schnell zu starten und wird auf absehbare Zeit durch eine vertrauenswürdige Firma mit Aktualisierungen versorgt. Aus diesen Gründen wurde sich für dieses Image entschieden.
 
 ## Konfiguration
 
-## docker-compose Datei
+Um das Image an die Anforderungen des Projektes anzupassen, müssen bestimmte Konfigurationen vorgenommen werden. Im Weiteren werden die Inhalte des Compose-Files asuführlich erläutert, um die Konfiguration für jeden verständlich zu machen.  
+Anschließend werden weitere Konfigurationen, die einmalig nach Start des Containers durchgeführt werden müssen, ausgeführt.
 
-In der Datei [`moodle-compose.yml`](docker-compose/moodle-compose.yml) 
+### docker-compose Datei
+
+In der Datei [`moodle-compose.yml`](docker-compose/moodle-compose.yml) findet sich die gesamte Konfiguration des Container-Images für Moodle. Im Folgenden wird Zeile für Zeile dieser Datei erläutert, um eine Umkonfiguration durch nachfolgende Administratoren zu erleichtern.
+
+
+
+### config.php
 
 ## Starten und Verwalten
 
