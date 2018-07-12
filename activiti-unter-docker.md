@@ -101,5 +101,5 @@ Die Logs des Containers `swim-activiti` werden nun in Echtzeit angezeigt. Um die
 
 ### Backups
 
-Um ein Backup 
+Um ein Backup der H2 Datenbank durchzuführen, gibt es ein Skript zur Automatisierung. Weitere Informationen finden sich im [entsprechenden Dokument](docker-compose/H2-Backup/README.md).
 
