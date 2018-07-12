@@ -188,7 +188,13 @@ Hierfür werden zusätzliche bestimmte Header gesetzt, um Moodle mitzuteilen, da
 
 ## Starten und Verwalten
 
+Um Nginx zu starten, wird folgendes Kommando verwendet:
+`$ docker-compose -f nginx-compose.yml up -d`
+Dies startet die Einträge in der Datei [`nginx-compose.yml`](docker-compose/activiti-compose.yml) im "detached"-Modus (`-d`), die Container laufen also im Hintergrund.
 
+Um die aktuellen Logs von Nginx zu sehen, wird folgendes Kommando verwendet:
+`$ docker logs -f swim-nginx`
+Die Logs des Containers `swim-activiti` werden nun in Echtzeit angezeigt. Um die Logs des Datenbank-Containers zu sehen, wird der Name des Containers in obigem Befehl getauscht gegen `swim-activiti-h2`.
 
 
 *****************
