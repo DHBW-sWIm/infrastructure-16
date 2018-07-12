@@ -39,50 +39,89 @@ Der Tag `container_name` definiert, mit welchem Namen der Container gestartet wi
       - MARIADB_DATABASE=bitnami_moodle
       - ALLOW_EMPTY_PASSWORD=yes
   ```
-Über die Elemente in dem Tag `environment` werden Umgebungsvariablen an den Container übergeben 
+Über die Elemente in dem Tag `environment` werden Umgebungsvariablen an den Container übergeben. Viele Container nutzen diesen Weg, um beim Start interne Konfigurationen durchzuführen. Im Falle des MariaDB-Containers wird hier ein DB-Schema angelegt (`MARIADB_DATABASE=bitnami_moodle`), ein Standard-Benutzer wird eingerichtet (`MARIADB_USER=bn_moodle`) und der Login als dieser Benutzer ohne Password wird erlaubt (`ALLOW_EMPTY_PASSWORD=yes`).
 
   ```
       volumes:
       - 'mariadb_data:/bitnami'
  ```
+Um Daten persistent über einen Neustart des Containers zu speichern, wird ein `volume` eingerichtet. Die Schreibweise verlinkt einen Speicherplatz auf dem lokalen System (Der String vor dem Doppelpunkt) auf einen Pfad in dem Container (der Pfad nach dem Doppelpunkt).  
+Sollte der String für den Speicherplatz auf dem lokalen System keinem Pfad entsprechen, wie hier in dieser Konfiguration, so legt Docker ein sogenanntes Volume an - im Grunde nur eine andere Art von Pfad, bei welcher sich Docker darum kümmert, wo die Daten persistent auf dem lokalen System gespeichert werden.
  
  ```
        networks:
       - moodle-net
 ```
+Um verschiedene Container miteinander reden zu lassen, müssen sich diese im selben Netzwerk befinden. Zu diesem Zweck erlaubt Docker das Erzeugen von virtuellen Netzwerken. In diesem Falle sind alle Container im selben Netz, `moodle-net`.
+<br>
+```
   moodle:
     image: 'bitnami/moodle:latest'
     container_name: swim-moodle
+```
+Der Container "moodle" wird definiert. Der Tag `image` definiert, welches Docker-Image verwendet werden soll. Sollte das gewählte Image lokal nicht gefunden werden, so lädt Docker es beim Start der Container herunter.  
+Der Tag `container_name` definiert, mit welchem Namen der Container gestartet wird. Dieser Name gilt in Docker-internen Netzen als Hostname, und wird auch in allen Management-Tools für Docker verwendet.
+
+```
     labels:
       kompose.service.type: nodeport
+```
+Der Tag `labels` fügt Metadaten zu einer Container-Instanz hinzu. Tatsächlich scheint der Verzicht auf diese Konfiguration den Container nicht zu beeinflussen. Da Moodle aber teilweise sehr seltsame Wege geht, wurde nicht riskiert, durch Weglassen dieser Konfiguration eine Funktionalität einzuschränken.
+
+```
     environment:
       - MARIADB_HOST=swim-moodle-db
       - MARIADB_PORT_NUMBER=3306
       - MOODLE_DATABASE_USER=bn_moodle
       - MOODLE_DATABASE_NAME=bitnami_moodle
       - ALLOW_EMPTY_PASSWORD=yes
+```
+Über die Elemente in dem Tag `environment` werden Umgebungsvariablen an den Container übergeben. Viele Container nutzen diesen Weg, um beim Start interne Konfigurationen durchzuführen. In diesem Fall werden die Zugangsdaten für den oben konfigurierten MariaDB-Container angegeben, um eine Verbindung aufzubauen.
+
+```    
     volumes:
       - '/mnt/swim/moodle-data/apache:/bitnami/apache'
       - '/mnt/swim/moodle-data/php:/bitnami/php'
       - '/mnt/swim/moodle-data/moodle:/bitnami/moodle'
+```
+Um Daten persistent über einen Neustart des Containers zu speichern, wird ein `volume` eingerichtet. Die Schreibweise verlinkt einen Speicherplatz auf dem lokalen System (Der String vor dem Doppelpunkt) auf einen Pfad in dem Container (der Pfad nach dem Doppelpunkt).  
+Der Moodle-Contaier erlaubt das Mappen von bestimmten Ordnern im Container-internen Ordner `bitnami` in die Anwendung. Zusätzliche Konfiguration in Form von Dateien kann so mit in den Container übergeben werden.  
+Die Pfade auf dem lokalen System sind den eigenen Gegebenheiten entsprechend anzupassen.
+
+```
     networks:
       - moodle-net
+```
+Um verschiedene Container miteinander reden zu lassen, müssen sich diese im selben Netzwerk befinden. Zu diesem Zweck erlaubt Docker das Erzeugen von virtuellen Netzwerken. In diesem Falle sind alle Container im selben Netz, `moodle-net`.
+
+```
     depends_on:
       - mariadb
-
+```
+Der Tag `depends_on` definiert, welcher Container zuerst gestartet werden soll, bevor der aktuelle Container starten darf. Hier startet der Container "moodle" erst, nachdem der Container "mariadb" läuft - dies verhindert Abstürze von Moodle, weil die Datenbank nicht erreichbar ist. Sollte der Container "mariadb" noch starten und keine Verbindungen akzeptieren, wird Moodle abstürzen.
+<br>
+```
 volumes:
   mariadb_data:
     driver: local
   moodle_data:
     driver: local
+```
+Unabhänging von den Containern werden lokale Volumes definiert. Die Konfiguration mit dem Treiber `local` bedeutet lediglich, dass die Daten auf Host-System gespeichert werden sollen.
 
+```
 networks:
   moodle-net:
     external:
       name: moodle_moodle-net
+```
+Um die Container in einem Netz zu verbinden, muss ein Netzwerk existieren. hier wird das Netzwerk `moodle-net` definiert, dass sich nach außen hin für Container, welche nicht über diese docker-compose Datei defineirt wurden, als `moodle_moodle-net` zeigt.
 
+<br>
 
 ### config.php
+
+
 
 ## Starten und Verwalten
 
