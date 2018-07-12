@@ -3,8 +3,6 @@ services:
   nginx:
     image: "wonderfall/boring-nginx:latest"
     container_name: swim-nginx
-    depends_on:
-      - nextcloud
     ports:
       - "80:8000"
       - "443:4430"
