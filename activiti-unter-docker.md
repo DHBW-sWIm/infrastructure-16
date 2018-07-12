@@ -7,4 +7,4 @@
 
 ## Konfiguration
 
-### docker-compose File
+### docker-compose Datei
