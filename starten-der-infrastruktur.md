@@ -25,6 +25,28 @@ Wie bereits erwähnt, müssen manche Dateien vor der Inbetriebnahme der Infrastr
   
 ## Finaler Start
 
+Die Container sollten alle in einer gewissen Reihenfolge gestartet werden. Es empfiehlt sich, zunächst die Dienste Moodle und Activiti zu starten, und anschließend Nginx als Reverse Proxy hochzufahren. So ist gewährleistet, dass Nginx die Dienste tatsächlich erreichen kann.
+
+Um Moodle und die damit verbundene Datenbank zu starten, wird folgendes Kommando verwendet:
+`$ docker-compose -f moodle-compose.yml up -d`
+
+Um Moodle und die damit verbundene Datenbank zu starten, wird folgendes Kommando verwendet:
+`$ docker-compose -f activiti-compose.yml up -d`  
+
+Um Nginx zu starten, wird folgendes Kommando verwendet:
+`$ docker-compose -f nginx-compose.yml up -d`
+
+Dies startet die Einträge in den entsprechenden Dateien im "detached"-Modus (`-d`), die Container laufen also im Hintergrund.
+<br>
+*Anschließend sollte die Infrastruktur voll lauffähig und unter dem eingetragenen Domainnamen erreichbar sein.*
+<br>
+
+## Debugging beim Start
+
+Sollten Dienste nicht erreichbar sein, empfiehlt es sich, mittels `docker logs -f $CONTAINERNAME` die Logs der betroffenen Container während einer solchen Anfrage zu beobachten. Meist lässt sich so schnell nachvollziehen, wo die Ursache eines Problems liegt.
+
+ Im Zweifel sind die beiden Freunde eines jeden Administrators, Google und StackOverflow, gute Hilfen, um Fehlermeldungen auf den Grund zu gehen.  
+
 
 
 
