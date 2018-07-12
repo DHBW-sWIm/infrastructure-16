@@ -1,6 +1,16 @@
 # Nginx als Reverse Proxy
 
+## Was ist ein Reverse Transparent Proxy?
 
+## Warum ein Reverse Transparent Proxy?
+
+## Konfiguration
+
+### docker-compose
+
+### Nginx Konfiguration
+
+## 
 
 
 *****************
