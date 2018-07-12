@@ -103,6 +103,30 @@ Alle Anfragen auf Port 80 des Hosts (und damit auf Port 8000 des Containers) wer
 Die einzige Ausnahme bilden hier Anfragen auf den Order `.well-known`, da dieser für das Einrichten von Let's Encrypt Zertfikaten erreichbar sein muss.
 
 ```
+server {
+  listen 4430 ssl spdy http2;
+  server_name activiti.myhost.de;
+
+  error_log /var/log/nginx/activiti-error.log info;
+
+  ssl_certificate /certs/fullchain.pem;
+  ssl_certificate_key /certs/privkey.pem;
+
+  include /etc/nginx/conf/ssl_params;
+  include /etc/nginx/conf/headers_params;
+
+  add_header Strict-Transport-Security "max-age=31536000;";
+  client_max_body_size 10000M;
+
+  location / {
+    resolver 127.0.0.11 ipv6=off;
+    set $upstream_activiti swim-activiti;
+    include /etc/nginx/conf/proxy_params;
+
+    proxy_pass http://$upstream_activiti:8080;
+  }
+}
+
 ```
 
 #### Moodle
