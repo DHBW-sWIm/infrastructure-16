@@ -3,13 +3,14 @@
 <!-- TOC -->
 
 - [1.1 Infrastruktur - Einleitung](README.md)
-	- [Das Container-Image](#das-container-image)
-	- [Konfiguration](#konfiguration)
-		- [docker-compose Datei](#docker-compose-datei)
-		- [config.php](#configphp)
-	- [Starten und Verwalten](#starten-und-verwalten)
+
 - [1.2 Docker](docker.md)
 - [1.3 Moodle unter Docker](moodle-unter-docker.md)
+    - [Das Container-Image](moodle-unter-docker.md#das-container-image)
+    - [Konfiguration](moodle-unter-docker.md#konfiguration)
+        - [docker-compose Datei](moodle-unter-docker.md#docker-compose-datei)
+        - [config.php](moodle-unter-docker.md#configphp)
+    - [Starten und Verwalten](moodle-unter-docker.md#starten-und-verwalten)
 - [1.4 Activiti unter Docker](activiti-unter-docker.md)
 - [1.5 Nginx als Reverse Proxy](nginx-als-reverse-proxy.md)
 - [1.6 Starten der Infrastruktur](starten-der-infrastruktur.md)
