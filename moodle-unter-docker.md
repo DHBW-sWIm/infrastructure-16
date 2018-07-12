@@ -115,7 +115,7 @@ networks:
     external:
       name: moodle_moodle-net
 ```
-Um die Container in einem Netz zu verbinden, muss ein Netzwerk existieren. hier wird das Netzwerk `moodle-net` definiert, dass sich nach außen hin für Container, welche nicht über diese docker-compose Datei defineirt wurden, als `moodle_moodle-net` zeigt.
+Um die Container in einem Netz zu verbinden, muss ein Netzwerk existieren. hier wird das Netzwerk `moodle-net` definiert, dass sich nach außen hin für Container, welche nicht über diese docker-compose Datei definiert wurden, als `moodle_moodle-net` zeigt.
 
 <br>
 
