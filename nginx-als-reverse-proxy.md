@@ -64,6 +64,7 @@ Um verschiedene Container miteinander reden zu lassen, müssen sich diese im sel
 ```
     restart: always
 ```
+Der Tag `restart: always` sorgt dafür, dass der Container im Falle eines Fehlers neu startet, statt sich einfach nur zu beenden.
 
 ```
 networks:
