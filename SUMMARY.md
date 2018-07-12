@@ -1,6 +1,6 @@
 # Summary
 
-* [Einleitung](README.md)
+* [Infrastruktur](README.md)
 * [Docker](docker.md)
 * [Moodle unter Docker](moodle-unter-docker.md)
 * [Activiti unter Docker](activiti-unter-docker.md)
