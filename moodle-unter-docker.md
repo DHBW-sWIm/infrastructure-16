@@ -132,6 +132,9 @@ $CFG->debug = (E_ALL | E_STRICT);   // === DEBUG_DEVELOPER - NOT FOR PRODUCTION 
 $CFG->debugdisplay = 1;             // NOT FOR PRODUCTION SERVERS!
 ```
 
+Es ist nicht nötig, die Datei in irgendeiner Form neu zu laden - die Änderungen werden direkt angewandt.
+
+**Es gilt zu beachten, dass diese Änderungen den Neustart des Containers nicht überstehen und dann erneut durchgeführt werden müssen.**
 
 ## Starten und Verwalten
 
