@@ -12,7 +12,7 @@ git clone https://github.com/DHBW-sWIm/Infrastruktur
 
 ## Dateien anpassen bzw. verschieben
 
-Speziell handelt es sich für die Container um folgende Dateien:
+Wie bereits erwähnt, müssen manche Dateien vor der Inbetriebnahme der Infrastruktur verschoben oder neu erzeugt werden. Speziell handelt es sich für die Container um folgende Dateien:
 
 + **Nginx:**
   + Zertfikate für TLS
