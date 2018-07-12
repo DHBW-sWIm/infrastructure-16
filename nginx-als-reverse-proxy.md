@@ -133,6 +133,7 @@ Anschließend wird für die Lokation `/`, also für alle Anfragen, definiert, da
 
 #### Moodle
 
+In der Datei [`moodle.conf`](docker-compose/Nginx/moodle.conf) ist der Transparent Proxy für Moodle definiert:
 
 ```
 server {
@@ -149,6 +150,42 @@ server {
 
 }
 ```
+Alle Anfragen auf Port 80 des Hosts (und damit auf Port 8000 des Containers) werden automatisch auf die TLS-verschlüsselte Verbindung auf Port 443 des Hosts (und damit auf Port 4430 des Containers) umgeleitet.  
+Die einzige Ausnahme bilden hier Anfragen auf den Order `.well-known`, da dieser für das Einrichten von Let's Encrypt Zertfikaten erreichbar sein muss.
+
+```
+server {
+  listen 4430 ssl spdy http2;
+  server_name moodle.myhost.de;
+
+  ssl_certificate /certs/fullchain.pem;
+  ssl_certificate_key /certs/privkey.pem;
+
+  include /etc/nginx/conf/ssl_params;
+  include /etc/nginx/conf/headers_params;
+
+  add_header Strict-Transport-Security "max-age=31536000;";
+  client_max_body_size 10000M;
+
+  location / {
+    resolver 127.0.0.11 ipv6=off;
+    set $upstream_moodle swim-moodle;
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Scheme $scheme;
+    proxy_redirect off;
+    proxy_pass $scheme://$upstream_moodle;
+  }
+
+}
+```
+
+Die Zertfikate werden eingebunden, die vom Container selbst bereitgestellten Standard-Konfigurationen für TLS- und SSL-Verbindungen werden eingebunden, und die maximale Größe der hochladbaren Dateien wird erhöht (in diesem Fall 10GB, was zugegebenermaßen etwas übertrieben sein mag).
+
+Anschließend wird für die Lokation `/`, also für alle Anfragen, definiert, dass diese an den internen Host "swim-moodle" auf Port 8080 weitergegeben werden sollen.  
+Hierfür werden zusätzliche bestimmte Header gesetzt, um Moodle mitzuteilen, dass es sich hinter einem Proxy befindet und seine Antworten entsprechend anpassen muss. Damit ist die Konfiguration des Proxys für Moodle komplett.
+
 
 
 ## Starten und Verwalten
