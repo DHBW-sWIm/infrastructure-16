@@ -96,12 +96,10 @@ Um Moodle und die damit verbundene Datenbank zu starten, wird folgendes Kommando
 Dies startet die Einträge in der Datei [`activiti-compose.yml`](docker-compose/activiti-compose.yml) im "detached"-Modus (`-d`), die Container laufen also im Hintergrund.
 
 Um die aktuellen Logs des Apache Webservers in dem Moodle-Container zu sehen, wird folgendes Kommando verwendet:
-`$ docker logs -f swim-moodle`
-Die Logs des Containers `swim-moodle` werden nun in Echtzeit angezeigt. Um die Logs des Datenbank-Containers zu sehen, wird der Name des Containers in obigem Befehl getauscht gegen `swim-moodle-db`.
-
-Um mit der Datenbank zu interagieren, kann dieses Kommando verwendet werden:
-`$ docker exec -ti swim-moodle-db mysql -u root`
-Dieser Befehl führt auf dem Container interaktiv (`exec -ti`) das Kommando `mysql -u root`, welches eine Sitzung als Benutzer `root` in der Datenbank öffnet. 
+`$ docker logs -f swim-activiti`
+Die Logs des Containers `swim-activiti` werden nun in Echtzeit angezeigt. Um die Logs des Datenbank-Containers zu sehen, wird der Name des Containers in obigem Befehl getauscht gegen `swim-activiti-h2`.
 
 ### Backups
+
+Um ein Backup 
 
