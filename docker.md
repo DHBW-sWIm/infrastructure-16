@@ -21,3 +21,8 @@ Ebenfalls erlaubt Docker die Skalierung von Diensten. Sollte der Bedarf bestehen
 ## docker-compose
 
 `docker-compose` ist ein Tool, welches das Starten, Verwalten und Verknüpfen von Docker-Containern erleichtert. Die Container samt ihrer anzuwendenen Parametern und Verknüpfungen zu anderen Containern werden in einer `.yml`-Datei festgehalten und sind so jederzeit reproduzierbar.
+
+
+*****************
+
+[Next - Chapter 1.3: Moodle unter Docker](moodle-unter-docker.md)
