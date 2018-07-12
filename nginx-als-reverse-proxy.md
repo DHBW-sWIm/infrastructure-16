@@ -18,7 +18,7 @@ Für den User prästentieren sich so sowohl Moodle als auch Activiti im Browser 
 
 ## Konfiguration
 
-Für den Reverse Proxy wurde der Webserver Nginx verwendet. Dieser wird der Portierbarkeit halber ebenfalls wieder über Docker betrieben. Im weiteren folgt die Konfiguration von der [`nginx-compose.yml`]() Datei sowie der Nginx-internen Konfiguration für zwei Subdomains ([für Moodle]() und [für Activiti]()) . Diese Konfigurationen werden ausführlich erläutert.
+Für den Reverse Proxy wurde der Webserver Nginx verwendet. Dieser wird der Portierbarkeit halber ebenfalls wieder über Docker betrieben. Im weiteren folgt die Konfiguration von der [`nginx-compose.yml`](docker-compose/nginx-compose.yml) Datei sowie der Nginx-internen Konfiguration für zwei Subdomains ([für Moodle]() und [für Activiti]()) . Diese Konfigurationen werden ausführlich erläutert.
 
 ### docker-compose
 
