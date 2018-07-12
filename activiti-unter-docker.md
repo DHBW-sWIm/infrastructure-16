@@ -46,16 +46,19 @@ Der Tag `container_name` definiert, mit welchem Namen der Container gestartet wi
       DB_USER: "sa"
       DB_NAME: "/opt/h2-data/activiti"
 ```
-
+Über die Elemente in dem Tag `environment` werden Umgebungsvariablen an den Container übergeben. Viele Container nutzen diesen Weg, um beim Start interne Konfigurationen durchzuführen. Im Falle des Activiti-Containers wird hier die DB definiert  (`DB_NAME: "/opt/h2-data/activiti"`, da H2 mit Dateien statt mit Schemata arbeitet), ein Standard-Benutzer wird eingerichtet (`DB_USER: "sa"`) und der Login als dieser Benutzer ohne Password wird erlaubt (`DB_PASS: ""`). Ebenfalls wird der Hostname des DB-Containers mit Port angegeben.
 
 ```
     restart: always
-    ```
-    ```
+```
+Der Tag `restart: always` sorgt dafür, dass der Container im Falle eines Fehlers neu startet, statt sich einfach nur zu beenden.
+    
+```
     networks:
       - moodle-net
 ```
-
+Um verschiedene Container miteinander reden zu lassen, müssen sich diese im selben Netzwerk befinden. Zu diesem Zweck erlaubt Docker das Erzeugen von virtuellen Netzwerken. In diesem Falle sind alle Container im selben Netz, `moodle-net`.
+<br>
 
 ```
   activitidb:
@@ -63,19 +66,20 @@ Der Tag `container_name` definiert, mit welchem Namen der Container gestartet wi
     container_name: "swim-activiti-h2"
     restart: always
 ```
-
+Für die Datenbank wurde ein externes Container-Image für eine simple H2 Datenbank gewählt. 
 
 ```
     volumes:
       - "/mnt/swim/h2-activiti:/opt/h2-data"
       - "/mnt/swim/h2-backups:/data"
 ```
-
+Um die Daten persistent zu halten, werden diese auf das lokale Dateisystem des Hosts gemappt. Diese Pfade vor den Doppelpunkten sind entsprechend der eigenen Konfiguration anzupassen.
 
 ```
     networks:
       - moodle-net
 ```
+Um verschiedene Container miteinander reden zu lassen, müssen sich diese im selben Netzwerk befinden. Zu diesem Zweck erlaubt Docker das Erzeugen von virtuellen Netzwerken. In diesem Falle sind alle Container im selben Netz, `moodle-net`.
 
 ```
 networks:
@@ -83,7 +87,7 @@ networks:
     external:
       name: moodle_moodle-net
 ```
-
+Um die Container in einem Netz zu verbinden, muss ein Netzwerk existieren. hier wird das Netzwerk `moodle-net` definiert, dass sich nach außen hin für Container, welche nicht über diese docker-compose Datei definiert wurden, als `moodle_moodle-net` zeigt.
 
 ## Starten und Verwalten
 
