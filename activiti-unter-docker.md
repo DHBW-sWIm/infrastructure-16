@@ -23,16 +23,21 @@ Die Konfiguration dieses Containers und der zugehörigen Datenbank findet aussch
 In der Datei [`activiti-compose.yml`](docker-compose/activiti-compose.yml) findet sich die gesamte Konfiguration des Container-Images für Moodle. Im Folgenden wird Zeile für Zeile dieser Datei erläutert, um eine Umkonfiguration durch nachfolgende Administratoren zu erleichtern.
 
 `version: '2'`
-
+Diese Zeile definiert die Version des docker-compose Files, und legt die Syntax fest. Für weitere Informationen, siehe [Compose file versions and upgrading
+](https://docs.docker.com/compose/compose-file/compose-versioning/).
 
 `services:`
- 
+Diese Zeile leitet die Konfiguration der zu startenden Container ein.
+
 ```
   activiti:
     image: lengers/activiti:6.0.0
     container_name: "swim-activiti"
-    ```
-    ```
+```
+Der Container "activiti" wird definiert. Der Tag `image` definiert, welches Docker-Image verwendet werden soll. Sollte das gewählte Image lokal nicht gefunden werden, so lädt Docker es beim Start der Container herunter.
+Der Tag `container_name` definiert, mit welchem Namen der Container gestartet wird. Dieser Name gilt in Docker-internen Netzen als Hostname, und wird auch in allen Management-Tools für Docker verwendet.
+
+```
     environment:
       DB_TYPE: "h2"
       DB_HOST: "swim-activiti-h2"
@@ -40,25 +45,33 @@ In der Datei [`activiti-compose.yml`](docker-compose/activiti-compose.yml) finde
       DB_PASS: ""                                                                         
       DB_USER: "sa"
       DB_NAME: "/opt/h2-data/activiti"
-    ```
-    ```
+```
+
+
+```
     restart: always
     ```
     ```
     networks:
       - moodle-net
 ```
+
+
 ```
   activitidb:
     image: zilvinas/h2-dockerfile
     container_name: "swim-activiti-h2"
     restart: always
 ```
+
+
 ```
     volumes:
       - "/mnt/swim/h2-activiti:/opt/h2-data"
       - "/mnt/swim/h2-backups:/data"
 ```
+
+
 ```
     networks:
       - moodle-net
