@@ -22,7 +22,49 @@ Für den Reverse Proxy wurde der Webserver Nginx verwendet. Dieser wird der Port
 
 ### docker-compose
 
+`version: "2"`
+
+
+`services:`
+
+```
+  nginx:
+    image: "wonderfall/boring-nginx:latest"
+    container_name: swim-nginx
+```
+
+```
+    ports:
+      - "80:8000"
+      - "443:4430"
+```
+```
+    volumes:
+      - /docker/certs:/certs
+      - /mnt/nginx/sites-enabled:/sites-enabled
+```
+
+```
+    networks:
+      - moodle-net
+```
+
+```
+    restart: always
+```
+
+```
+networks:
+  moodle-net:
+    external:
+      name: moodle_moodle-net
+```
+
 ### Nginx Konfiguration
+
+#### Activiti
+
+#### Moodle
 
 ## Starten und Verwalten
 
