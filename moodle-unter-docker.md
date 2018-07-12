@@ -121,6 +121,16 @@ Um die Container in einem Netz zu verbinden, muss ein Netzwerk existieren. hier 
 
 ### config.php
 
+In der Datei `config.php` liegt in dem Moodle-Conbtainer die interne Konfiguration für Moodle.  
+Um während der Entwicklung Debugging-Informationen und Fehlermeldungen zu erhalten, müssen enige Zeilen in diese Datei hinzugefügt werden. Dafür verbindet man sich einfach auf den Container (`docker exec -ti $CONTAINERNAME bash`, wobei $CONTAINERNAME durch den tatsächlichen Namen des Containers ersetzt werden muss), und bearbeitet die Datei dort mit dem Editor `nano`:
+`nano /opt/bitnami/moodle/config.php`  
+Dort müssen folgende Zeilen hinzugefügt werden:
+```PHP
+@error_reporting(E_ALL | E_STRICT); // NOT FOR PRODUCTION SERVERS!
+@ini_set('display_errors', '1');    // NOT FOR PRODUCTION SERVERS!
+$CFG->debug = (E_ALL | E_STRICT);   // === DEBUG_DEVELOPER - NOT FOR PRODUCTION SERVERS!
+$CFG->debugdisplay = 1;             // NOT FOR PRODUCTION SERVERS!
+```
 
 
 ## Starten und Verwalten
