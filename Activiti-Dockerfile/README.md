@@ -56,11 +56,11 @@ You can use `docker ps` to see what the mapping is.
 Below is the complete list of available options that can be used to customize your Activiti installation.
 
 ## Required Parameters
-- **DB_TYPE**: mysql or postgres
+- **DB_TYPE**: h2
 
 ## Optional Parameters
 - **DB_HOST**: The database server hostname.
-- **DB_PORT**: The database server port.  Has sane defaults depending on DB_TYPE (3306 for mysql, 5432 for postgres).
+- **DB_PORT**: The database server port.  Has sane defaults depending on DB_TYPE (1521 for H2).
 - **DB_NAME**: The database name. Defaults to `activiti`.
 - **DB_USER**: The database user. When linking, it uses the root user for the database otherwise `activiti`.
 - **DB_PASS**: The database password.  When linking this will be discovered from the environment, when remote it **must** be supplied.
