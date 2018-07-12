@@ -108,6 +108,6 @@ Um ein Backup der H2 Datenbank durchzuführen, gibt es ein Skript zur Automatisi
 
 *****************
 
-[Next - Chapter 1.5: Nginx als Reverse Proxy](moodle-unter-docker.md)
+[Next - Chapter 1.5: Nginx als Reverse Proxy](nginx-als-reverse-proxy.md)
   
 [Previous - Chapter 1.3: Moodle unter Docker](moodle-unter-docker.md)
