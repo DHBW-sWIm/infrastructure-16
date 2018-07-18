@@ -150,7 +150,7 @@ Um mit der Datenbank zu interagieren, kann dieses Kommando verwendet werden:
 `$ docker exec -ti swim-moodle-db mysql -u root`
 Dieser Befehl führt auf dem Container interaktiv (`exec -ti`) das Kommando `mysql -u root`, welches eine Sitzung als Benutzer `root` in der Datenbank öffnet. 
 
-
+Ein Backup der aktuellen Datenbank (Stand 18.07.2018 14:58) findet sich [hier](moodle-db/moodle.sql).
 
 
 *****************
