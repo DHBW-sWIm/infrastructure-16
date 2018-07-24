@@ -4,7 +4,7 @@ Nginx stellt die Schnittstelle zwischen den Diensten der Infrastruktur und dem N
 
 ## Was ist ein Reverse Transparent Proxy?
 
-![Reverse Proxy](/ https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Reverse_proxy_h2g2bob.svg/640px-Reverse_proxy_h2g2bob.svg.png?1531407567259)
+![Reverse Proxy](https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Reverse_proxy_h2g2bob.svg/640px-Reverse_proxy_h2g2bob.svg.png?1531407567259)
 
 > Der Reverse Proxy holt Ressourcen für einen Client von einem oder mehreren Servern. Die Umsetzung der Adresse ist atypisch und der Richtung des Aufrufes entgegengesetzt (deutsch „umgekehrter Proxy“). Die wahre Adresse des Zielsystems bleibt dem Client verborgen. ([Quelle](https://www.wikiwand.com/de/Reverse_Proxy))
 
