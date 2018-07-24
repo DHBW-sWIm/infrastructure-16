@@ -53,7 +53,7 @@ Das Gleiche passiert für den Port 443 (genutzt für HTTPS), welcher auf Port 44
 Die TLS-Zertfikate und die Konfigurationsdateien werden eingebunden.  
 Die Zertfikate wurden mittels [*Let's Encrypt*](https://letsencrypt.org/) erstellt und sind logischerweise dem eigenen System anzupassen. Zertifikate von *Let's Encrypt* sind kostenlos und leicht zu erzeugen.  
 
-In dem Ordner *sites-enabled* sollten die Konfigurationsdateien [`activiti.conf`](docker-compose/Nginx/activiti.conf) und [`moodle.conf`](docker-compose/Nginx/moodle.conf) liegen. Ohen diese Konfiguration sind die beiden Dienste von außerhalb nicht erreichbar.
+In dem Ordner *sites-enabled* sollten die Konfigurationsdateien [`activiti.conf`](docker-compose/Nginx/activiti.conf) und [`moodle.conf`](docker-compose/Nginx/moodle.conf) liegen. Ohne diese Konfiguration sind die beiden Dienste von außerhalb nicht erreichbar.
 
 ```
     networks:
