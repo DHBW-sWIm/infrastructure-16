@@ -92,6 +92,7 @@ Die Pfade auf dem lokalen System sind den eigenen Gegebenheiten entsprechend anz
     networks:
       - moodle-net
 ```
+
 Um verschiedene Container miteinander reden zu lassen, müssen sich diese im selben Netzwerk befinden. Zu diesem Zweck erlaubt Docker das Erzeugen von virtuellen Netzwerken. In diesem Falle sind alle Container im selben Netz, `moodle-net`.
 
 ```
@@ -100,6 +101,7 @@ Um verschiedene Container miteinander reden zu lassen, müssen sich diese im sel
 ```
 Der Tag `depends_on` definiert, welcher Container zuerst gestartet werden soll, bevor der aktuelle Container starten darf. Hier startet der Container "moodle" erst, nachdem der Container "mariadb" läuft - dies verhindert Abstürze von Moodle, weil die Datenbank nicht erreichbar ist. Sollte der Container "mariadb" noch starten und keine Verbindungen akzeptieren, wird Moodle abstürzen.
 <br>
+
 ```
 volumes:
   mariadb_data:
@@ -125,6 +127,7 @@ In der Datei `config.php` liegt in dem Moodle-Conbtainer die interne Konfigurati
 Um während der Entwicklung Debugging-Informationen und Fehlermeldungen zu erhalten, müssen enige Zeilen in diese Datei hinzugefügt werden. Dafür verbindet man sich einfach auf den Container (`docker exec -ti $CONTAINERNAME bash`, wobei $CONTAINERNAME durch den tatsächlichen Namen des Containers ersetzt werden muss), und bearbeitet die Datei dort mit dem Editor `nano`:
 `nano /opt/bitnami/moodle/config.php`  
 Dort müssen folgende Zeilen hinzugefügt werden:
+
 ```PHP
 @error_reporting(E_ALL | E_STRICT); // NOT FOR PRODUCTION SERVERS!
 @ini_set('display_errors', '1');    // NOT FOR PRODUCTION SERVERS!
