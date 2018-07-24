@@ -2,42 +2,12 @@
 
 <!-- TOC -->
 
-- [1.1 Infrastruktur - Einleitung](README.md)
-	- [Übersicht](README.md#übersicht)
-	- [Infrastrucutre as Code](README.md#infrastrucutre-as-code)
-	- [Verwendete Systeme](README.md#verwendete-systeme)
-	- [Start der Infrastrukur](README.md#start-der-infrastrukur)
-- [1.2 Docker](docker.md)
-	- [Was ist Docker?](docker.md#was-ist-docker)
-	- [Warum überhaupt Docker?](docker.md#warum-überhaupt-docker)
-	- [docker-compose](docker.md#docker-compose)
-- [1.3 Moodle unter Docker](moodle-unter-docker.md)
-    - [Das Container-Image](moodle-unter-docker.md#das-container-image)
-    - [Konfiguration](moodle-unter-docker.md#konfiguration)
-        - [docker-compose Datei](moodle-unter-docker.md#docker-compose-datei)
-        - [config.php](moodle-unter-docker.md#configphp)
-    - [Starten und Verwalten](moodle-unter-docker.md#starten-und-verwalten)
-- [1.4 Activiti unter Docker](activiti-unter-docker.md)
-     - [Das Container-Image](activiti-unter-docker.md#das-container-image)
-     	- [Dockerfile](activiti-unter-docker.md#dockerfile)
-     - [Konfiguration](activiti-unter-docker.md#konfiguration)
-     	- [docker-compose Datei](activiti-unter-docker.md#docker-compose-datei)
-     - [Starten und Verwalten](activiti-unter-docker.md#starten-und-verwalten)
-     	- [Backups](activiti-unter-docker.md#backups)
-- [1.5 Nginx als Reverse Proxy](nginx-als-reverse-proxy.md)
-	- [Was ist ein Reverse Transparent Proxy?](nginx-als-reverse-proxy.md#was-ist-ein-reverse-transparent-proxy)
-	- [Warum ein Reverse Transparent Proxy?](nginx-als-reverse-proxy.md#warum-ein-reverse-transparent-proxy)
-	- [Konfiguration](nginx-als-reverse-proxy.md#konfiguration)
-		- [docker-compose](nginx-als-reverse-proxy.md#docker-compose)
-		- [Nginx Konfiguration](nginx-als-reverse-proxy.md#nginx-konfiguration)
-			- [Activiti](nginx-als-reverse-proxy.md#activiti)
-			- [Moodle](nginx-als-reverse-proxy.md#moodle)
-	- [Starten und Verwalten](nginx-als-reverse-proxy.md#starten-und-verwalten)
-- [1.6 Starten der Infrastruktur](starten-der-infrastruktur.md)
-	- [Klonen](starten-der-infrastruktur.md#klonen)
-	- [Dateien anpassen bzw. verschieben](starten-der-infrastruktur.md#dateien-anpassen-bzw-verschieben)
-	- [Finaler Start](starten-der-infrastruktur.md#finaler-start)
-	- [Debugging beim Start](starten-der-infrastruktur.md#debugging-beim-start)
+- [Inhaltsverzeichnis](#inhaltsverzeichnis)
+- [Infrastruktur](#infrastruktur)
+	- [Übersicht](#übersicht)
+	- [Infrastrucutre as Code](#infrastrucutre-as-code)
+	- [Verwendete Systeme](#verwendete-systeme)
+	- [Start der Infrastrukur](#start-der-infrastrukur)
 
 <!-- /TOC -->
 
@@ -56,13 +26,13 @@ Um die Daten aller Studenten, Dozenten und Resourcen persistent zu halten, benö
 
 Um Prozesse innerhalb des Universitätslebens einfacher abbilden und durchführen zu können, wurde beschlossen, das Konzept eines **Business Process Management** Systems vom Vorjahr zu übernehmen. Zwar verwendete der Kurs des Vorjahres an dieser Stelle die Software [jBPM](https://www.jbpm.org/), eine kurze Einarbeitungsphase in dieses Tool durch einige Kursteilnehmer zeigte jedoch rasch, dass die Bedienung dieses Tools eine längere Einarbeitungszeit gebraucht hätte und mit "nicht intuitiv" von den Testern höflich als für dieses Projekt ungeeignet abgelehnt wurde. Eine Evaluierung anderer Optionen resultierte in der gemeinsamen Entschidung für [**Activiti**](https://www.activiti.org/). 
 
-Auch Activiti benötigt für die Persistenz von Prozessen eine Datenbank. Hierfür wurde eine **H2** Datenbank verwendet. Die genaueren Gründe für diese Entscheidung finden sich in [Kapitel 1.4](activiti-unter-docker.md).
+Auch Activiti benötigt für die Persistenz von Prozessen eine Datenbank. Hierfür wurde eine **H2** Datenbank verwendet. Die genaueren Gründe für diese Entscheidung finden sich in [Kapitel 4](activiti-unter-docker.md).
 
 ## Infrastrucutre as Code
 
 Um eine leichte Migration auf andere Systeme, eine potentielle Skalierung oder eine Rekonfiguration zu erleichtern, wurde sich entschieden, die gesamte Infrastruktur des Projektes in Code festzuhalten.
 
-Die Verwendung von [Docker](docker.md) als Betriebsplattform für alle Dienste des Projektes macht die Infrastruktur unabhängig von dem Betreiber der Systeme, auf der sie läuft, und erlaubt einen schnellen Umzug. Mehr dazu in [Kapitel 1.2](docker.md).
+Die Verwendung von [Docker](docker.md) als Betriebsplattform für alle Dienste des Projektes macht die Infrastruktur unabhängig von dem Betreiber der Systeme, auf der sie läuft, und erlaubt einen schnellen Umzug. Mehr dazu in [Kapitel 2](docker.md).
 
 Hauptsächlich bedeutet dieses Setup für einen neuen Administrator, dass die Infrastruktur in sich selbst dokumentiert ist, da die verwendeten Docker-Container grundlegend eigene Dokumentation zu ihren Möglichkeiten und Konfigurationsoptionen bieten, und Aktualisierungen schnell und unkompliziert durchzuführen sind.
 
@@ -78,8 +48,8 @@ Der verwendete Server war bereits über einen Hostnamen mit gültigem TLS-Zertif
 
 ## Start der Infrastrukur
 
-Für eine kompakte Anleitung zum Start der Infrastruktur, siehe [Kapitel 1.6](starten-der-infrastruktur.md)
+Für eine kompakte Anleitung zum Start der Infrastruktur, siehe [Kapitel 6](starten-der-infrastruktur.md)
 
 *****************
 
-[Next - Chapter 1.2: Docker](docker.md)
+[Next - Chapter 2: Docker](docker.md)
