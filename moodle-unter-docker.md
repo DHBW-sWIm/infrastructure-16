@@ -29,7 +29,9 @@ Diese Zeile leitet die Konfiguration der zu startenden Container ein.
 ```  
 mariadb:
     image: 'bitnami/mariadb:latest'
-    container_name: swim-moodle-db```
+    container_name: swim-moodle-db
+```
+
 Der Container "mariadb" wird definiert. Der Tag `image` definiert, welches Docker-Image verwendet werden soll. Sollte das gewählte Image lokal nicht gefunden werden, so lädt Docker es beim Start der Container herunter.  
 Der Tag `container_name` definiert, mit welchem Namen der Container gestartet wird. Dieser Name gilt in Docker-internen Netzen als Hostname, und wird auch in allen Management-Tools für Docker verwendet.
 
