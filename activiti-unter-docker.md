@@ -22,11 +22,11 @@ Die Konfiguration dieses Containers und der zugehörigen Datenbank findet aussch
 
 In der Datei [`activiti-compose.yml`](docker-compose/activiti-compose.yml) findet sich die gesamte Konfiguration des Container-Images für Moodle. Im Folgenden wird Zeile für Zeile dieser Datei erläutert, um eine Umkonfiguration durch nachfolgende Administratoren zu erleichtern.
 
-`version: '2'`
+`version: '2'`  
 Diese Zeile definiert die Version des docker-compose Files, und legt die Syntax fest. Für weitere Informationen, siehe [Compose file versions and upgrading
 ](https://docs.docker.com/compose/compose-file/compose-versioning/).
 
-`services:`
+`services:`  
 Diese Zeile leitet die Konfiguration der zu startenden Container ein.
 
 ```
