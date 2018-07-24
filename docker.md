@@ -25,6 +25,6 @@ Ebenfalls erlaubt Docker die Skalierung von Diensten. Sollte der Bedarf bestehen
 
 *****************
 
-[Next - Chapter 1.3: Moodle unter Docker](moodle-unter-docker.md)
+[Next - Chapter 3: Moodle unter Docker](moodle-unter-docker.md)
   
-[Previous - Chapter 1.1: Einleitung](README.md)
+[Previous - Chapter 1: Einleitung](README.md)

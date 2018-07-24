@@ -199,5 +199,5 @@ Die Logs des Containers `swim-nginx` werden nun in Echtzeit angezeigt.
 
 *****************
 
-[Next - Chapter 1.6: Starten der Infrastruktur](starten-der-infrastruktur.md)
-[Previous - Chapter 1.4: Activiti unter Docker](activiti-unter-docker.md)
+[Next - Chapter 6: Starten der Infrastruktur](starten-der-infrastruktur.md)
+[Previous - Chapter 4: Activiti unter Docker](activiti-unter-docker.md)

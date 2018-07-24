@@ -52,4 +52,4 @@ Sollten Dienste nicht erreichbar sein, empfiehlt es sich, mittels `docker logs -
 
 *****************
 
-[Previous - Chapter 1.5: Nginx als Reverse Proxy](nginx-als-reverse-proxy.md)
+[Previous - Chapter 5: Nginx als Reverse Proxy](nginx-als-reverse-proxy.md)

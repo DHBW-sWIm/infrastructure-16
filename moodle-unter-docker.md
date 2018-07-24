@@ -155,6 +155,6 @@ Ein Backup der aktuellen Datenbank (Stand 18.07.2018 14:58) findet sich [hier](m
 
 *****************
 
-[Next - Chapter 1.4: Activiti unter Docker](activiti-unter-docker.md)
+[Next - Chapter 4: Activiti unter Docker](activiti-unter-docker.md)
   
-[Previous - Chapter 1.2: Docker](docker.md)
+[Previous - Chapter 2: Docker](docker.md)
