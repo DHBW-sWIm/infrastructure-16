@@ -33,22 +33,22 @@ mariadb:
 Der Container "mariadb" wird definiert. Der Tag `image` definiert, welches Docker-Image verwendet werden soll. Sollte das gewählte Image lokal nicht gefunden werden, so lädt Docker es beim Start der Container herunter.  
 Der Tag `container_name` definiert, mit welchem Namen der Container gestartet wird. Dieser Name gilt in Docker-internen Netzen als Hostname, und wird auch in allen Management-Tools für Docker verwendet.
 
-  ```    
+```    
     environment:
       - MARIADB_USER=bn_moodle
       - MARIADB_DATABASE=bitnami_moodle
       - ALLOW_EMPTY_PASSWORD=yes
-  ```
+```
 Über die Elemente in dem Tag `environment` werden Umgebungsvariablen an den Container übergeben. Viele Container nutzen diesen Weg, um beim Start interne Konfigurationen durchzuführen. Im Falle des MariaDB-Containers wird hier ein DB-Schema angelegt (`MARIADB_DATABASE=bitnami_moodle`), ein Standard-Benutzer wird eingerichtet (`MARIADB_USER=bn_moodle`) und der Login als dieser Benutzer ohne Password wird erlaubt (`ALLOW_EMPTY_PASSWORD=yes`).
 
-  ```
+```
       volumes:
       - 'mariadb_data:/bitnami'
- ```
+```
 Um Daten persistent über einen Neustart des Containers zu speichern, wird ein `volume` eingerichtet. Die Schreibweise verlinkt einen Speicherplatz auf dem lokalen System (Der String vor dem Doppelpunkt) auf einen Pfad in dem Container (der Pfad nach dem Doppelpunkt).  
 Sollte der String für den Speicherplatz auf dem lokalen System keinem Pfad entsprechen, wie hier in dieser Konfiguration, so legt Docker ein sogenanntes Volume an - im Grunde nur eine andere Art von Pfad, bei welcher sich Docker darum kümmert, wo die Daten persistent auf dem lokalen System gespeichert werden.
  
- ```
+```
        networks:
       - moodle-net
 ```
