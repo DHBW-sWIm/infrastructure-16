@@ -3,7 +3,7 @@ services:
 
   mariadb:
     image: 'bitnami/mariadb:latest'
-    container_name: swim-moodle-db
+    container_name: swim_${PLUGIN_NAME}_db
     environment:
       - MARIADB_USER=bn_moodle
       - MARIADB_DATABASE=bitnami_moodle
@@ -15,21 +15,22 @@ services:
 
   moodle:
     image: 'bitnami/moodle:latest'
-    container_name: swim-moodle
+    container_name: swim_${PLUGIN_NAME}_moodle
     labels:
       kompose.service.type: nodeport
     environment:
-      - MARIADB_HOST=swim-moodle-db
+      - MARIADB_HOST=swim_${PLUGIN_NAME}_db
       - MARIADB_PORT_NUMBER=3306
       - MOODLE_DATABASE_USER=bn_moodle
       - MOODLE_DATABASE_NAME=bitnami_moodle
       - ALLOW_EMPTY_PASSWORD=yes
     volumes:
-      - '/mnt/swim/moodle-data/apache:/bitnami/apache'
-      - '/mnt/swim/moodle-data/php:/bitnami/php'
-      - '/mnt/swim/moodle-data/moodle:/bitnami/moodle'
+      - 'moodle_data:/bitnami'
     networks:
       - moodle-net
+      - default
+    ports:
+      - "${MOODLE_PORT}:80"
     depends_on:
       - mariadb
 
@@ -43,3 +44,5 @@ networks:
   moodle-net:
     external:
       name: moodle_moodle-net
+  default:
+      driver: bridge
