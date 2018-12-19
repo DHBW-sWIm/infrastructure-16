@@ -15,6 +15,16 @@ fi
 export MOODLE_PORT=`echo $2 | grep -o '[0-9]*'`
 export PLUGIN_NAME=`echo $1 | sed 's/[^a-z1-9A-Z]*//g'`
 
+if docker ps -a | grep -qo swim_${PLUGIN_NAME}_ && [ -z `echo $2 | grep -o '\-r'` ]
+then
+	echo "A process of the same name already exists. Do you wish to erase all data and re-create it? (y/n)"
+	read res
+	if [ "$res" != "y" ]
+	then
+		exit
+	fi
+fi
+
 echo "Stopping possible running docker containers for project..."
 docker ps -a | grep -q swim_${PLUGIN_NAME}_ && docker stop `docker ps -a | grep swim_${PLUGIN_NAME}_ | grep -o ^[a-z0-9]*`
 echo "done"
