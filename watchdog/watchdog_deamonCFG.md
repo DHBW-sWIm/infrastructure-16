@@ -12,9 +12,9 @@ After=network.target
 
 [Service]
 Type=simple
-User=                                                      // system user name
-ExecStart=/usr/bin/node /home/watchdog/watchdog-main.js    // plugin and main script location
-WorkingDirectory=/home/watchdog/                           // has to be the folder of the main script
+User=debian
+ExecStart=/usr/bin/node /home/Infrastruktur/watchdog-main.js
+WorkingDirectory=/home/Infrastruktur
 Restart=on-failure
 
 [Install]
