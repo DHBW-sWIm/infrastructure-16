@@ -1,7 +1,7 @@
 const net 			= require("net");
 const fs			= require("fs");
 const util			= require("util");
-const nodemailer 	= require("nodemailer");
+const nodemailer 		= require("nodemailer");
 
 // variables to be set
 var transporter;
@@ -18,7 +18,7 @@ var transporterOptions = {
 
 var mailOptions = {
 	from: '"Friendly Watchdog" <moodle.dhbw.mannheim@gmail.com>', // sender address
-	to: "lazar0303@gmail.com, timon.lukas3@gmail.com", // list of receivers
+	to: "lazar0303@gmail.com, timon.lukas3@gmail.com, s161080@student.dhbw-mannheim.de", // list of receivers
 };
 
 // hosts to test
