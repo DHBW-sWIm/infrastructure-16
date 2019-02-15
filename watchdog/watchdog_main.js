@@ -21,84 +21,80 @@ var mailOptions = {
 	to: "lazar0303@gmail.com, timon.lukas3@gmail.com, s161080@student.dhbw-mannheim.de", // list of receivers
 };
 
+// process names and default services
+var processes = ["bpxtest", "hardware-rental", "mastercrm", "digitalsignature", "scientific-paper", "studentregistration"];
+var defaultServices = ["", "camunda", "tomcat", "adminer", "mailhog"]
+
 // hosts to test
 var hosts = [{
 	// name or some kind of identifier of the 
-	name: "nginx server by IP",
+	name: "Jira server by DNS",
 	// address details
 	connectOptions: {
 		// host (ip or url like jira.moodle-dhbw.de)
-		host: "141.72.191.46",
+		host: "jira.moodle-dhbw.de",
 		// port of target system
-		port: 22
+		port: 443
 	},
 	// checks if error was sent
 	lastState: true
 	
 }, {
-	name: "Nginx server by DN",
+	name: "Sharepoint server by DNS",
 	connectOptions: {
-		host: "moodle-dhbw.de",
-		port: 22
+		host: "sharepoint.moodle-dhbw.de",
+		port: 443
 	},
 	lastState: true
 }, {
-	name: "Jira Server http",
+	name: "GitHub server by DNS",
 	connectOptions: {
-		host: "jira.moodle-dhbw.de",
-		port: 80
+		host: "github.moodle-dhbw.de",
+		port: 443
 	},
 	lastState: true
 }, {
-	name: "Jira Server ssh",
+	name: "Slack server by DNS",
 	connectOptions: {
-		host: "141.72.191.48",
-		port: 22
+		host: "slack.moodle-dhbw.de",
+		port: 443
 	},
 	lastState: true
 }, {
-	name: "Moodle instance 0",
+	name: "Hubspot server by DNS",
 	connectOptions: {
-		host: "141.72.191.47",
-		port: 8080
+		host: "hubspot.moodle-dhbw.de",
+		port: 443
 	},
 	lastState: true
 }, {
-	name: "Moodle instance 1",
+	name: "Signavio server by DNS",
 	connectOptions: {
-		host: "141.72.191.47",
-		port: 8081
+		host: "signavio-designer.moodle-dhbw.de",
+		port: 443
 	},
 	lastState: true
 }, {
-	name: "Moodle instance 2",
+	name: "Travis server by DNS",
 	connectOptions: {
-		host: "141.72.191.47",
-		port: 8082
-	},
-	lastState: true
-}, {
-	name: "Moodle instance 3",
-	connectOptions: {
-		host: "141.72.191.47",
-		port: 8083
-	},
-	lastState: true
-}, {
-	name: "Moodle instance 4",
-	connectOptions: {
-		host: "141.72.191.47",
-		port: 8084
-	},
-	lastState: true
-}, {
-	name: "Moodle instance 5",
-	connectOptions: {
-		host: "141.72.191.47",
-		port: 8085
+		host: "travis.moodle-dhbw.de",
+		port: 443
 	},
 	lastState: true
 }];
+
+for(var i = 0; i < processes.length; i++){
+	for(var k = 0; k < defaultServices.length; k++){
+		hosts.push({
+			name: "Process " + processes[i] + "with service " + (defaultServices[k] == "" ? "Moodle" : defaultServices[k]) + " server by DNS",
+			connectOptions: {
+				host: (defaultServices[k] == "" ? "" : (defaultServices[k] + ".")) + processes[i] + ".moodle-dhbw.de",
+				port: 443
+			},
+			lastState: true
+		});
+	}
+}
 
 // set startup data
 async function setup(){	
