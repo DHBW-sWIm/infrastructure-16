@@ -5,6 +5,7 @@ services:
     container_name: swim_${PROCESS_NAME}_db
     environment:
       - MARIADB_USER=bn_moodle
+      - MARIADB_PASSWORD="!swim-access?"
       - MARIADB_DATABASE=bitnami_moodle
       - ALLOW_EMPTY_PASSWORD=yes
     volumes:
@@ -22,6 +23,7 @@ services:
       - MARIADB_HOST=swim_${PROCESS_NAME}_db
       - MARIADB_PORT_NUMBER=3306
       - MOODLE_DATABASE_USER=bn_moodle
+      - MOODLE_DATABASE_PASSWORD="!swim-access?"
       - MOODLE_DATABASE_NAME=bitnami_moodle
       - ALLOW_EMPTY_PASSWORD=yes
     volumes:
