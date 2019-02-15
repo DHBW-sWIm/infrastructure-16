@@ -69,6 +69,8 @@ volumes:
     driver: local
   moodle_data:
     driver: local
+  camunda_data:
+    driver: local
 
 networks:
   moodle-net:
