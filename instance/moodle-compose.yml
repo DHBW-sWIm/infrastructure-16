@@ -1,9 +1,8 @@
 version: '2'
 services:
-
   mariadb:
     image: 'bitnami/mariadb:latest'
-    container_name: swim_${PLUGIN_NAME}_db
+    container_name: swim_${PROCESS_NAME}_db
     environment:
       - MARIADB_USER=bn_moodle
       - MARIADB_DATABASE=bitnami_moodle
@@ -12,14 +11,15 @@ services:
       - 'mariadb_data:/bitnami'
     networks:
       - moodle-net
+    restart: always
 
   moodle:
     image: 'bitnami/moodle:latest'
-    container_name: swim_${PLUGIN_NAME}_moodle
+    container_name: swim_${PROCESS_NAME}_moodle
     labels:
       kompose.service.type: nodeport
     environment:
-      - MARIADB_HOST=swim_${PLUGIN_NAME}_db
+      - MARIADB_HOST=swim_${PROCESS_NAME}_db
       - MARIADB_PORT_NUMBER=3306
       - MOODLE_DATABASE_USER=bn_moodle
       - MOODLE_DATABASE_NAME=bitnami_moodle
@@ -30,9 +30,39 @@ services:
       - moodle-net
       - default
     ports:
-      - "${MOODLE_PORT}:80"
+      - "${PROCESS_PORT}:443"
     depends_on:
       - mariadb
+    restart: always
+    
+  camunda:
+    image: 'camunda/camunda-bpm-platform'
+    container_name: swim_${PROCESS_NAME}_camunda
+    volumes:
+      - "camunda_data:/camunda/webapps"
+    networks:
+      - moodle-net
+      - default
+    ports:
+      - "${PROCESS_PORT + 1}:8080"
+      
+  adminer:
+    image: 'woahbase/alpine-adminer'
+    container_name: swim_${PROCESS_NAME}_adminer
+    networks:
+      - moodle-net
+      - default
+    ports:
+      - "${PROCESS_PORT + 2}:443"
+      
+  mailhog:
+    image: 'mailhog/mailhog'
+    container_name: swim_${PROCESS_NAME}_mailhog
+    networks:
+      - moodle-net
+      - default
+    ports:
+      - "${PROCESS_PORT + 3}:8025"
 
 volumes:
   mariadb_data:
