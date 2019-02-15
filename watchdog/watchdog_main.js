@@ -1,4 +1,4 @@
-const net 			= require("net");
+const https 			= require("https");
 const fs			= require("fs");
 const util			= require("util");
 const nodemailer 		= require("nodemailer");
@@ -136,26 +136,25 @@ async function handleError(host, checkErr){
 
 // check host function
 async function checkHost(host){
-	var sock = new net.Socket();
-	sock.setTimeout(5000);
-	
-	try {
-		sock.on('connect', () => {
+	var options = {
+		host: "www." + host.connectOptions.host,
+		port: host.connectOptions.port,
+		path: "",
+		method: "GET"
+	};
+
+	var req = https.request(options, function(res) {
+		if(res.statusCode === 200){
 			console.log("[CLEAR]: " + host.name + "\n==============================================================");
 			host.lastState = true;
-			sock.destroy();
-		
-		}).on('error', err => {
+		} else {
 			handleError(host, err);
-		
-		}).on('timeout', err => {
-			handleError(host, err);
-		
-		}).connect(host.connectOptions);
-	
-	} catch (err){
-		await handleError(host, err);
-	}
+		}
+	});
+
+	req.on('error', function(e) {
+		handleError(host, e);
+	});
 }
 
 // main check loop
