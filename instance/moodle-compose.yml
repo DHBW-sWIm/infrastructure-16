@@ -49,6 +49,7 @@ services:
       - default
     ports:
       - "${PROCESS_PORT_CAMUNDA}:8080"
+    restart: always
           
   adminer:
     image: 'woahbase/alpine-adminer'
@@ -58,6 +59,7 @@ services:
       - default
     ports:
       - "${PROCESS_PORT_ADMINER}:443"
+    restart: always
       
   mailhog:
     image: 'mailhog/mailhog'
@@ -67,6 +69,7 @@ services:
       - default
     ports:
       - "${PROCESS_PORT_MAILHOG}:8025"
+    restart: always
 
 volumes:
   mariadb_data:
