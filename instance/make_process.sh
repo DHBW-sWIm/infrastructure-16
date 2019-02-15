@@ -19,7 +19,7 @@ export PROCESS_PORT_CAMUNDA=$((${PROCESS_PORT_MOODLE} + 1))
 export PROCESS_PORT_ADMINER=$((${PROCESS_PORT_MOODLE} + 2))
 export PROCESS_PORT_MAILHOG=$((${PROCESS_PORT_MOODLE} + 3))
 
-if docker ps -a | grep -qo swim_${PROCESS_NAME}_ && [ -z `echo $2 | grep -o '\-r'` ]
+if docker ps -a | grep -qo swim_${PROCESS_NAME}_ && [ -z `echo $2 | grep -o '\-r'` ] && [ -z `echo $3 | grep -o '\-y'` ]
 then
 	echo "A process of the same name already exists. Do you wish to erase all data and re-create it? (y/n)"
 	read res
@@ -33,7 +33,7 @@ echo "Stopping possible running docker containers for project..."
 docker ps -a | grep -q swim_${PROCESS_NAME}_ && docker stop `docker ps -a | grep swim_${PROCESS_NAME}_ | grep -o ^[a-z0-9]*`
 echo "done"
 echo "Removing existing docker containers for project..."
-docker ps -a | grep -q swim_${PROCESS_NAME}_ && docker rm `docker ps -a | grep swim_${PROCESS_NAME}_ | grep -o ^[a-z0-9]*`
+docker ps -a | grep -q swim_${PROCESS_NAME}_ && docker rm -v `docker ps -a | grep swim_${PROCESS_NAME}_ | grep -o ^[a-z0-9]*`
 echo "done"
 echo "Removing lingering persistent volumes for project..."
 docker volume ls | grep -oq "swim${PROCESS_NAME}_.*$" && docker volume rm `docker volume ls | grep -o "swim${PROCESS_NAME}_.*$"`
