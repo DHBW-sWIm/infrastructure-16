@@ -170,7 +170,7 @@ async function start(){
 	await setup();
 	
 	// calling the main loop every 5 mins
-	setInterval(mainLoop, 300000);
+	setInterval(mainLoop, 10000);
 }
 
 start();
