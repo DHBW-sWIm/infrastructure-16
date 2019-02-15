@@ -45,6 +45,7 @@ services:
       - default
     ports:
       - "${PROCESS_PORT_CAMUNDA}:8080"
+    command: /sbin/tini "sed '42 a \\ <user username=\"admin\" password=\"tomcat\" roles=\"manager-gui,manager-script,manager-jmx,manager-status,admin-gui\"/>' /camunda/conf/tomcat-user.xml && ./camunda.sh"
       
   adminer:
     image: 'woahbase/alpine-adminer'
