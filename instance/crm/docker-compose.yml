@@ -8,7 +8,7 @@ services:
     php:
         image: crm_php
         ports:
-             - "80:80" 
+             - "${SWIM_CRM_PORT}:80" 
         environment:
              - SWIM_CRM_CLONE_GIT_REPO_URL=${SWIM_CRM_CLONE_GIT_REPO_URL}
              - MARIADB_PASSWORD=${SWIM_CRM_MARIADB_PASSWORD}
