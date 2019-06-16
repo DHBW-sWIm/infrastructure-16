@@ -1,0 +1,20 @@
+version: '2'
+services:
+    mariadb:
+        image: crm_db
+        environment:
+             - MARIADB_ROOT_PASSWORD=${SWIM_CRM_MARIADB_PASSWORD}
+        restart: always
+    php:
+        image: crm_php
+        ports:
+             - "80:80" 
+        environment:
+             - SWIM_CRM_CLONE_GIT_REPO_URL=${SWIM_CRM_CLONE_GIT_REPO_URL}
+             - MARIADB_PASSWORD=${SWIM_CRM_MARIADB_PASSWORD}
+             - HOSTNAME=${SWIM_CRM_HOSTNAME}
+             - SSH_KEY=${SWIM_CRM_BACKUP_GIT_REPO_SSH_KEY}
+             - BACKUP_GIT_REPO_URL=${SWIM_CRM_BACKUP_GIT_REPO_URL}
+        depends_on:
+             - mariadb
+        restart: always
