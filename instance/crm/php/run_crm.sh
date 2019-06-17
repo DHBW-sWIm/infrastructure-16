@@ -28,7 +28,7 @@ do
 	do
 		chmod -R a+wx .
 		sleep 1m
-		git pull
+		git pull -s recursive -X ours
 	done
 
 	if [ -z "${SSH_KEY}" ]; then
@@ -40,7 +40,7 @@ do
 		git push
 		cd /db_backup/mastercrm-vtiger
 		git remote set-url origin "${BACKUP_GIT_REPO_URL}"
-		git pull
+		git pull -s recursive -X ours
 		mysqldump -h mariadb -u root -p"${MARIADB_PASSWORD}" vtiger_crm > /db_backup/mastercrm-vtiger/backup.sql
 		git add .
 		git commit -m "Database backup"
