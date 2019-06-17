@@ -24,7 +24,13 @@ echo "<?php \$dbpass = '${MARIADB_PASSWORD}'; ?>" > db_pass.php
 echo "<?php \$site_URL = '${HOSTNAME}'; ?>" > hostname.php
 apache2-foreground & while true
 do
-	git pull
+	for i in {1..30}
+	do
+		chmod -R a+wx .
+		sleep 1m
+		git pull
+	done
+
 	if [ -z "${SSH_KEY}" ]; then
 		echo "[Warning] SSH key not set: not backing up."
 	else
@@ -41,6 +47,4 @@ do
 		git push
 		cd /var/www/html/mastercrm-vtiger
 	fi
-	chmod -R a+wx .
-	sleep 1m
 done 
