@@ -23,9 +23,9 @@ The local setup is designed for local development environments. It has sensible 
 
 Prerequisites: `docker` and `docker-compose`
 1. Clone this repo
-2. Run `$ start_crm.sh`
+2. Run `# start_crm.sh`
 3. Wait for a few minutes
-4. The CRM installation should be accessable on 127.0.0.1/mastercrm-vtiger/index.php
+4. The CRM installation should be accessable on 127.0.0.1:8080/mastercrm-vtiger/index.php
 
 ## Production setup
 
@@ -45,7 +45,18 @@ Prerequisites: `docker`, `docker-compose` and a git repository
 The `start_crm.sh` file contains all the parameters that may be tweaked on the instance. You can change them as you see fit to achieve an optimal result. These environment variables may also be set manually from the shell, the `start_crm.sh` script is just a convenience feature. An explanation of the environment variables is as follows:
 
 SWIM_CRM_CLONE_GIT_REPO_URL specifies the master repository URL (default: 'https://github.com/DHBW-sWIm/mastercrm-vtiger.git')
+
 SWIM_CRM_BACKUP_GIT_REPO_URL specifies the backup repository URL (default: 'git@github.com:DHBW-sWIm/mastercrm-vtiger.git')
+
 SWIM_CRM_BACKUP_GIT_REPO_SSH_KEY specifies the backup repository SSH key (default: '')
-SWIM_CRM_MARIADB_PASSWORD specifies the database password *change this for production* (default: 'A very secure database password')
+
+SWIM_CRM_MARIADB_PASSWORD specifies the database password *change this for production* (default: 'A very secure database 
+password')
+
 SWIM_CRM_HOSTNAME specifies the host name of the server (default: 'http://127.0.0.1')
+
+SWIM_CRM_PORT specifies the port of the application (default: 8080)
+
+## Notes for development
+
+Avoid editing the files in `storage`, `test` and `user_privileges`. These files may be changed by the client, and cause merge conflicts.
