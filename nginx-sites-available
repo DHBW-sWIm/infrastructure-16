@@ -1,4 +1,23 @@
-# jira
+# Wiki
+
+server {
+	server_name wiki.moodle-dhbw.de;
+	location / {
+		proxy_pass http://192.168.200.12:8080;
+		proxy_set_header Host $host;
+		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
+	}
+
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+
+# Jira
 
 server {
 	server_name jira.moodle-dhbw.de;
@@ -7,6 +26,16 @@ server {
 		proxy_set_header Host $host;
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
 	}
+
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 # bpxtest
@@ -19,21 +48,35 @@ server {
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 server {
 	server_name camunda.bpxtest.moodle-dhbw.de;
-	location / {
+	location = / {
 		return 301 http://camunda.bpxtest.moodle-dhbw.de/camunda;
 	}
-	location /camunda {
+	location / {
 		proxy_pass http://192.168.200.10:8001;
 		proxy_set_header Host $host;
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 server {
@@ -47,7 +90,14 @@ server {
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 server {
@@ -61,7 +111,14 @@ server {
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 server {
@@ -70,9 +127,18 @@ server {
 		proxy_pass http://192.168.200.10:8003;
 		proxy_set_header Host $host;
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection "Upgrade";
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 # hardware-rental
@@ -85,21 +151,35 @@ server {
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 server {
 	server_name camunda.hardware-rental.moodle-dhbw.de;
-	location / {
+	location = / {
 		return 301 http://camunda.hardware-rental.moodle-dhbw.de/camunda;
 	}
-	location /camunda {
+	location / {
 		proxy_pass http://192.168.200.10:8011;
 		proxy_set_header Host $host;
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 server {
@@ -113,7 +193,14 @@ server {
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 server {
@@ -127,7 +214,14 @@ server {
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 server {
@@ -136,9 +230,18 @@ server {
 		proxy_pass http://192.168.200.10:8013;
 		proxy_set_header Host $host;
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection "Upgrade";
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 # mastercrm
@@ -151,21 +254,35 @@ server {
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 server {
 	server_name camunda.mastercrm.moodle-dhbw.de;
-	location / {
+	location = / {
 		return 301 http://camunda.mastercrm.moodle-dhbw.de/camunda;
 	}
-	location /camunda {
+	location / {
 		proxy_pass http://192.168.200.10:8021;
 		proxy_set_header Host $host;
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 server {
@@ -179,7 +296,14 @@ server {
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 server {
@@ -193,7 +317,14 @@ server {
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 server {
@@ -202,11 +333,55 @@ server {
 		proxy_pass http://192.168.200.10:8023;
 		proxy_set_header Host $host;
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection "Upgrade";
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
+server {
+	server_name vtiger2.mastercrm.moodle-dhbw.de;
+	location / {
+		proxy_pass http://192.168.200.10:8024;
+		proxy_set_header Host $host;
+		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
+	}
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
+}
+
+server {
+	server_name vtiger.mastercrm.moodle-dhbw.de;
+	location / {
+		proxy_pass http://192.168.200.10:8025;
+		proxy_set_header Host $host;
+		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
+	}
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
+}
 # digitalsignature
 
 server {
@@ -217,21 +392,35 @@ server {
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 server {
 	server_name camunda.digitalsignature.moodle-dhbw.de;
-	location / {
+	location = / {
 		return 301 http://camunda.digitalsignature.moodle-dhbw.de/camunda;
 	}
-	location /camunda {
+	location / {
 		proxy_pass http://192.168.200.10:8031;
 		proxy_set_header Host $host;
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 server {
@@ -245,7 +434,14 @@ server {
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 server {
@@ -259,7 +455,14 @@ server {
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 server {
@@ -268,9 +471,18 @@ server {
 		proxy_pass http://192.168.200.10:8033;
 		proxy_set_header Host $host;
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection "Upgrade";
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 # scientific-paper
@@ -283,21 +495,35 @@ server {
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 server {
 	server_name camunda.scientific-paper.moodle-dhbw.de;
-	location / {
+	location = / {
 		return 301 http://camunda.scientific-paper.moodle-dhbw.de/camunda;
 	}
-	location /camunda {
+	location / {
 		proxy_pass http://192.168.200.10:8041;
 		proxy_set_header Host $host;
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 server {
@@ -311,7 +537,14 @@ server {
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 server {
@@ -325,7 +558,14 @@ server {
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 server {
@@ -336,7 +576,14 @@ server {
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 # studentregistration
@@ -349,21 +596,35 @@ server {
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 server {
 	server_name camunda.studentregistration.moodle-dhbw.de;
-	location / {
+	location = / {
 		return 301 http://camunda.studentregistration.moodle-dhbw.de/camunda;
 	}
-	location /camunda {
+	location / {
 		proxy_pass http://192.168.200.10:8051;
 		proxy_set_header Host $host;
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 server {
@@ -377,7 +638,14 @@ server {
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 server {
@@ -391,7 +659,14 @@ server {
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 server {
@@ -402,7 +677,14 @@ server {
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 # Static redirects
@@ -413,16 +695,30 @@ server {
 		return 301 https://studentdhbwmannheimde.sharepoint.com/sites/SWIM;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 server {
 	server_name github.moodle-dhbw.de;
 	location / {
 		return 301 https://github.com/DHBW-sWIm;
-	}		
+	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 server {
@@ -431,7 +727,14 @@ server {
 		return 301 http://dhbw-moodle.slack.com;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 server {
@@ -440,7 +743,14 @@ server {
 		return 301 https://www.hubspot.com/;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 server {
@@ -449,7 +759,14 @@ server {
 		return 301 https://academic.signavio.com/p/explorer;
 	}
 
-    listen 80;
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
 }
 
 server {
@@ -458,5 +775,557 @@ server {
 		return 301 https://travis-ci.com/;
 	}
 
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/bpxtest.moodle-dhbw.de/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
+}
+
+server {
+    if ($host = bpxtest.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name bpxtest.moodle-dhbw.de;
+
     listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = adminer.bpxtest.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name adminer.bpxtest.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = camunda.bpxtest.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name camunda.bpxtest.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = mailhog.bpxtest.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name mailhog.bpxtest.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = tomcat.bpxtest.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name tomcat.bpxtest.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = digitalsignature.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name digitalsignature.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = adminer.digitalsignature.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name adminer.digitalsignature.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = camunda.digitalsignature.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name camunda.digitalsignature.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = mailhog.digitalsignature.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name mailhog.digitalsignature.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = tomcat.digitalsignature.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name tomcat.digitalsignature.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = github.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name github.moodle-dhbw.de;		
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = hardware-rental.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name hardware-rental.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = adminer.hardware-rental.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name adminer.hardware-rental.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = camunda.hardware-rental.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name camunda.hardware-rental.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = mailhog.hardware-rental.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name mailhog.hardware-rental.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = tomcat.hardware-rental.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name tomcat.hardware-rental.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = hubspot.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name hubspot.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = jira.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name jira.moodle-dhbw.de;
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = mastercrm.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name mastercrm.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = adminer.mastercrm.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name adminer.mastercrm.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = camunda.mastercrm.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name camunda.mastercrm.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = mailhog.mastercrm.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name mailhog.mastercrm.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = tomcat.mastercrm.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name tomcat.mastercrm.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = vtiger.mastercrm.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name vtiger.mastercrm.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = scientific-paper.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name scientific-paper.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = adminer.scientific-paper.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name adminer.scientific-paper.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = camunda.scientific-paper.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name camunda.scientific-paper.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = mailhog.scientific-paper.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name mailhog.scientific-paper.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = tomcat.scientific-paper.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name tomcat.scientific-paper.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = sharepoint.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name sharepoint.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = signavio-designer.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name signavio-designer.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = slack.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name slack.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = studentregistration.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name studentregistration.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = adminer.studentregistration.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name adminer.studentregistration.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = camunda.studentregistration.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name camunda.studentregistration.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = mailhog.studentregistration.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name mailhog.studentregistration.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = tomcat.studentregistration.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name tomcat.studentregistration.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = travis.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name travis.moodle-dhbw.de;
+
+    listen 80;
+    return 404; # managed by Certbot
+
+
+}
+
+
+server {
+    if ($host = wiki.moodle-dhbw.de) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	server_name wiki.moodle-dhbw.de;
+    listen 80;
+    return 404; # managed by Certbot
+
+
 }
