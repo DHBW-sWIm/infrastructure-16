@@ -26,9 +26,11 @@ In the hosts array one can create host objects which describe: a name (for ident
 
 ## Server setup
 
-The repository should be downloaded to `/home/watchdog/` folder.
+1. Install NodeJS 9 or newer.
 
-Then configure the system deamon as described in the `watchdog_deamonCFG` file.
+2. Download this repository to `/home/watchdog/` folder.
+
+3. Configure the system deamon as described in the `watchdog_deamonCFG` file.
 
 To start the service type:
 
