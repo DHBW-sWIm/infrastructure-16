@@ -197,6 +197,9 @@ server {
 server {
 	server_name vtiger2.mastercrm.moodle-dhbw.de;
 	location / {
+		return 301 http://vtiger2.mastercrm.moodle-dhbw.de/mastercrm-vtiger;
+	}
+	location / {
 		proxy_pass http://192.168.200.10:8024;
 		proxy_set_header Host $host;
 		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
@@ -205,6 +208,9 @@ server {
 
 server {
 	server_name vtiger.mastercrm.moodle-dhbw.de;
+	location / {
+		return 301 http://vtiger.mastercrm.moodle-dhbw.de/mastercrm-vtiger;
+	}
 	location / {
 		proxy_pass http://192.168.200.10:8025;
 		proxy_set_header Host $host;
