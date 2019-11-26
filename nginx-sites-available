@@ -20,6 +20,17 @@ server {
 	}
 }
 
+# Rocket.Chat Communication
+
+server {
+	server_name communication.moodle-dhbw.de;
+	location / {
+		proxy_pass http://192.168.200.14:3000;
+		proxy_set_header Host $host;
+		proxy_set_header X-HTTPS-Protocol $ssl_protocol;
+	}
+}
+
 # bpxtest
 
 server {
