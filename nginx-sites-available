@@ -207,7 +207,7 @@ server {
 
 server {
 	server_name vtiger2.mastercrm.moodle-dhbw.de;
-	location / {
+	location = / {
 		return 301 http://vtiger2.mastercrm.moodle-dhbw.de/mastercrm-vtiger;
 	}
 	location / {
@@ -219,7 +219,7 @@ server {
 
 server {
 	server_name vtiger.mastercrm.moodle-dhbw.de;
-	location / {
+	location = / {
 		return 301 http://vtiger.mastercrm.moodle-dhbw.de/mastercrm-vtiger;
 	}
 	location / {
